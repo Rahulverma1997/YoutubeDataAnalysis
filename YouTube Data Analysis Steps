@@ -1,0 +1,22 @@
+1. Top 5 categories with maximum number of videos uploaded
+
+    grunt> data = load '/youtubedata1/part-m-00000' as (videoid:chararray,uploader:chararray,interval:int,category:chararray,lenght:int,views:int,rating:float,nrating:int,ncomment:int,relatedid:chararray);
+    grunt> databycategory = group data by category;
+    grunt> videosbycategory = foreach databycategory generate group,COUNT(data.videoid);
+    grunt> dump videosbycategory;
+    grunt> catdescorder = order videosbycategory by $1 desc;                            
+    grunt> top5category = limit catdescorder 5;
+    grunt> dump top5category;
+
+2. Top 10 videos with maximum number of ratings
+    grunt> data = load '/youtubedata1/part-m-00000' as (videoid:chararray,uploader:chararray,interval:int,category:chararray,lenght:int,views:int,rating:float,nrating:int,ncomment:int,relatedid:chararray);
+    grunt> rateddata = foreach data generate videoid, nrating, category;
+    grunt> videoratingsdesc = order rateddata by nrating desc;          
+    grunt> top10ratedvideos = limit videoratingsdesc 10;                
+    grunt> dump top10ratedvideos; 
+
+3. Top 5 Most viewed videos
+    grunt> viewsdata = foreach data generate videoid, views, category;
+    grunt> viewsdesc = order viewsdata by views desc;                 
+    grunt> top5view = limit viewsdesc 5;
+    grunt> dump top5view;
