@@ -5,7 +5,7 @@ Project Description -
 --> Problem Statement 
 
 --------->A. Find out the top 5 categories with maximum number of videos uploaded. 
---------->B. Find out the top 10 rated videos. 
+--------->B. Find out the top 10 videos with maximum number of ratings. 
 --------->C. Find out the most viewed videos. 
 
 
