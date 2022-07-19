@@ -1,0 +1,14 @@
+# Remove whiteSpaces from dataset and merge "string & string" in movie name.
+
+
+1. load Data to HDFS
+    --> hadoop fs -put '/home/cloudera/Desktop/youtubedata.txt' /youtube/
+    
+2. Open pig
+    grunt> cleandata1 = load '/youtube' using TextLoader() as (line:chararray);
+    grunt> cleandata2 = foreach cleandata1 generate REPLACE(line,' & ','&');    
+    grunt> cleandata3 = foreach cleandata2 generate REPLACE($0,' ','');
+    
+3. store data to HDFS
+    grunt> store cleandata3 into 'cleanyoutubedata';
+    
