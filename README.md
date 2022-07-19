@@ -22,3 +22,11 @@ Column8: Number of ratings given on the video.
 Column9: Number of comments on the videos in integer data type. 
 Column10: Related video ids with the uploaded video.
 
+
+Solution Steps - 
+1. Load data to HDFS
+2. Load and clean data using pig
+3. Store clean data again to HDFS
+4. Load and analyze the clean data
+5. Store the results back to HDFS
+
